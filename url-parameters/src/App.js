@@ -13,9 +13,15 @@ import {
   When the user navigates to /invoices/1, they should see "Invoice #1".
 */
 
-const Student = () => <h3>Student: SHOW NAME HERE</h3>;
+const Student = () => {
+  const { student } = useParams();
+  return <h3>Student: {student}</h3>;
+};
 
-const Invoice = () => <h3>Invoice #SHOW ID HERE</h3>;
+const Invoice = () => {
+  const { id } = useParams();
+  return <h3>Invoice: {id}</h3>;
+};
 
 export default function App() {
   return (
@@ -53,6 +59,12 @@ export default function App() {
         <hr />
 
         {/* Routes go here */}
+        <Route exact path="/:student">
+          <Student />
+        </Route>
+        <Route path="/invoices/:id">
+          <Invoice />
+        </Route>
       </React.Fragment>
     </Router>
   );
