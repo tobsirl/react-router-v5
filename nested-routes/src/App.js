@@ -115,7 +115,26 @@ const newsletters = [
 ];
 
 function Issue() {
-  return <div></div>;
+  const { id, issue } = useParams();
+
+  const { name, links } = newsletters
+    .find((news) => news.id === id)
+    .issues.find(({ id }) => issue === id);
+
+  return (
+    <div>
+      <h2>{name}</h2>
+      <ul>
+        {links.map(({ title, url }) => {
+          return (
+            <li>
+              <a href={url}>{title}</a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 }
 
 function Publication() {
@@ -125,19 +144,24 @@ function Publication() {
   const { name, description, issues } = newsletters.find(
     (news) => news.id === id
   );
+
   return (
     <div>
       <h2>{name}</h2>
       <p>{description}</p>
       <ul>
-        {issues.map(({ id, name }) => {
+        {issues.map((issue) => {
           return (
-            <li key={id}>
-              <Link>{name}</Link>
+            <li key={issue.id}>
+              <Link to={`${url}/${issue.id}`}>{issue.name}</Link>
             </li>
           );
         })}
       </ul>
+      <hr />
+      <Route path={`${path}/:issue`}>
+        <Issue />
+      </Route>
     </div>
   );
 }
