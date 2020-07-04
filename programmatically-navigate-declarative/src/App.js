@@ -8,23 +8,24 @@
     you redirect them (declaratively using <Redirect />) to the /results page.
 */
 
-import * as React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 
 const submit = () => {
   // fake AF
   return new Promise((res) => {
-    setTimeout(() => res(), 500);
+    setTimeout(() => res(<Redirect to="/results" />), 500);
   });
 };
 
 function Results() {
-  return <h1>Mmmm. Thanks for submitting your favorite food.</h1>;
+  return <h1>{`Mmmm. Thanks for submitting your favorite food.`}</h1>;
 }
 
 function Form() {
-  const [name, setName] = React.useState('');
-  const [food, setFood] = React.useState('');
+  const [name, setName] = useState('');
+  const [food, setFood] = useState('');
+  const [toResults, setToResults] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,8 +35,12 @@ function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    submit(name, food);
+    submit(name, food).then(setToResults(true));
   };
+
+  if (toResults) {
+    return <Redirect to="/results" />;
+  }
 
   return (
     <form onSubmit={handleSubmit}>
