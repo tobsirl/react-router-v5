@@ -53,5 +53,16 @@ function Form() {
 }
 
 export default function App() {
-  return <div />;
+  return (
+    <div>
+      <Router>
+        <Route exact path="/">
+          <Form />
+        </Route>
+        <Route path="/results">
+          <Results />
+        </Route>
+      </Router>
+    </div>
+  );
 }
