@@ -24,9 +24,25 @@ export default function App() {
   return (
     <Router>
       <div>
-        {/* Nav here */}
-
-        {/* Routes here */}
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/settings">Settings</Link>
+          </li>
+        </ul>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/settings">
+            <Settings />
+          </Route>
+          <Route path="*">
+            <FourZeroFour />
+          </Route>
+        </Switch>
       </div>
     </Router>
   );
