@@ -40,7 +40,7 @@ const Statements = () => (
   <React.Fragment>
     <h2>Statements</h2>
     <ul>
-      {invoices.map(({ id, account, amount }) => (
+      {invoices.map(({ id }) => (
         <li key={id}>
           <Link to={`/${id}`}>#{id}</Link>
         </li>
@@ -51,7 +51,7 @@ const Statements = () => (
 
 const Invoice = () => {
   const { iid } = useParams();
-  const { account, id, amount } = invoices.find(
+  const { id, account, amount } = invoices.find(
     (inv) => inv.id === Number(iid)
   );
 
@@ -79,6 +79,17 @@ export default function App() {
         </ul>
 
         {/* Routes here */}
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/statements">
+            <Statements />
+          </Route>
+          <Route path="/:iid">
+            <Invoice />
+          </Route>
+        </Switch>
       </div>
     </Router>
   );
