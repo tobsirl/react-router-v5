@@ -13,7 +13,10 @@ import {
 } from 'react-router-dom';
 
 const Friends = () => {
-  const friends = [];
+  const location = useLocation();
+  console.log(location.state);
+  const friends = location.state;
+  console.log(friends);
   return (
     <React.Fragment>
       <h1>Friends</h1>
@@ -61,7 +64,14 @@ export default function App() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/friends">Friends</Link>
+            <Link
+              to={{
+                pathname: '/friends',
+                state: friends,
+              }}
+            >
+              Friends
+            </Link>
           </li>
         </ul>
 
