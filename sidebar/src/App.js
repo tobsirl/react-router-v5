@@ -33,6 +33,11 @@ export default function App() {
           </ul>
 
           {/* sidebar routes here */}
+          {routes.map((route) => (
+            <Route path={route.path} exact={route.path} sidebar={route.sidebar}>
+              <route.sidebar />
+            </Route>
+          ))}
         </div>
 
         <div>{/* body  routes here */}</div>
