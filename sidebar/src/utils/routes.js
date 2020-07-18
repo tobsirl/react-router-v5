@@ -1,4 +1,7 @@
 import React from 'react';
+import Home from '../components/Home';
+import Rainbows from '../components/Rainbows';
+import Bears from '../components/Bears';
 
 export const routes = [
   {
@@ -9,11 +12,7 @@ export const routes = [
         🏠🏠🏠🏠🏠
       </span>
     ),
-    main: () => (
-      <span role="img" aria-label="Home">
-        🏠🏠🏠🏠🏠
-      </span>
-    ),
+    main: () => <Home />,
   },
   {
     path: '/rainbows',
@@ -22,11 +21,7 @@ export const routes = [
         🌈🌈🌈🌈🌈
       </span>
     ),
-    main: () => (
-      <span role="img" aria-label="Home">
-        🌈🌈🌈🌈🌈
-      </span>
-    ),
+    main: () => <Rainbows />,
   },
   {
     path: '/bears',
@@ -35,10 +30,6 @@ export const routes = [
         🐻🐻🐻🐻🐻
       </span>
     ),
-    main: () => (
-      <span role="img" aria-label="Home">
-        🐻🐻🐻🐻🐻
-      </span>
-    ),
+    main: () => <Bears />,
   },
 ];
