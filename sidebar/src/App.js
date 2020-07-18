@@ -15,6 +15,49 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 // routes array here
 
+const routes = [
+  {
+    path: '/',
+    exact: true,
+    sidebar: () => (
+      <span role="img" aria-label="Home">
+        🏠🏠🏠🏠🏠
+      </span>
+    ),
+    main: () => (
+      <span role="img" aria-label="Home">
+        🏠🏠🏠🏠🏠
+      </span>
+    ),
+  },
+  {
+    path: '/rainbows',
+    sidebar: () => (
+      <span role="img" aria-label="Home">
+        🌈🌈🌈🌈🌈
+      </span>
+    ),
+    main: () => (
+      <span role="img" aria-label="Home">
+        🌈🌈🌈🌈🌈
+      </span>
+    ),
+  },
+  {
+    path: '/bears',
+    sidebar: () => (
+      <span role="img" aria-label="Home">
+        🐻🐻🐻🐻🐻
+      </span>
+    ),
+    main: () => (
+      <span role="img" aria-label="Home">
+        🐻🐻🐻🐻🐻
+      </span>
+    ),
+  },
+];
+
 export default function App() {
   return (
     <Router>
