@@ -12,51 +12,7 @@
 
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
-// routes array here
-
-const routes = [
-  {
-    path: '/',
-    exact: true,
-    sidebar: () => (
-      <span role="img" aria-label="Home">
-        🏠🏠🏠🏠🏠
-      </span>
-    ),
-    main: () => (
-      <span role="img" aria-label="Home">
-        🏠🏠🏠🏠🏠
-      </span>
-    ),
-  },
-  {
-    path: '/rainbows',
-    sidebar: () => (
-      <span role="img" aria-label="Home">
-        🌈🌈🌈🌈🌈
-      </span>
-    ),
-    main: () => (
-      <span role="img" aria-label="Home">
-        🌈🌈🌈🌈🌈
-      </span>
-    ),
-  },
-  {
-    path: '/bears',
-    sidebar: () => (
-      <span role="img" aria-label="Home">
-        🐻🐻🐻🐻🐻
-      </span>
-    ),
-    main: () => (
-      <span role="img" aria-label="Home">
-        🐻🐻🐻🐻🐻
-      </span>
-    ),
-  },
-];
+import { routes } from './utils/routes';
 
 export default function App() {
   return (
@@ -64,6 +20,17 @@ export default function App() {
       <div style={{ display: 'flex' }}>
         <div className="sidebar">
           {/* navbar here */}
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/rainbows">Rainbows</Link>
+            </li>
+            <li>
+              <Link to="/bears">Bears</Link>
+            </li>
+          </ul>
 
           {/* sidebar routes here */}
         </div>
