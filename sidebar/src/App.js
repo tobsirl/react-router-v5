@@ -40,7 +40,13 @@ export default function App() {
           ))}
         </div>
 
-        <div>{/* body  routes here */}</div>
+        <div>
+          {routes.map((route) => (
+            <Route path={route.path} exact={route.path} main={route.main}>
+              <route.main />
+            </Route>
+          ))}
+        </div>
       </div>
     </Router>
   );
