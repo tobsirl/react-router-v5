@@ -15,7 +15,15 @@ const Home = () => <h2>Home</h2>;
 const Settings = () => <h2>Settings</h2>;
 const Notifications = () => <h2>Notifications</h2>;
 
-const EmojiLink = ({ children, to, exact, emoji }) => <div />;
+const EmojiLink = ({ children, to, exact, emoji }) => {
+  return (
+    <div>
+      <Link to={to} exact={exact}>
+        {children}
+      </Link>
+    </div>
+  );
+};
 
 export default function App() {
   return (
