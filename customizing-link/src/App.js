@@ -9,18 +9,26 @@
 */
 
 import * as React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  useRouteMatch,
+} from 'react-router-dom';
 
 const Home = () => <h2>Home</h2>;
 const Settings = () => <h2>Settings</h2>;
 const Notifications = () => <h2>Notifications</h2>;
 
 const EmojiLink = ({ children, to, exact, emoji }) => {
+  const match = useRouteMatch({ exact, path: to });
+
   return (
-    <div>
+    <div className={match ? 'active' : ''}>
       <Link to={to} exact={exact}>
         {children}
       </Link>
+      {match ? <span>{emoji}</span> : ''}
     </div>
   );
 };
