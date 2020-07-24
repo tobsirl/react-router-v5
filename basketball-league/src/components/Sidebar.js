@@ -4,9 +4,21 @@ import slug from 'slug';
 import usePlayers from '../hooks/usePlayers';
 
 function Sidebar() {
-  const {loading, } = usePlayers()
-  console.log(usePlayers);
-  return <div>Side</div>;
+  const { loading, response: players } = usePlayers();
+  console.log(players);
+
+  if (loading) return null;
+  return (
+    <div>
+      <ul>
+        {players.map((player) => (
+          <li key={player.name}>
+            <Link to="">{player.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default Sidebar;
