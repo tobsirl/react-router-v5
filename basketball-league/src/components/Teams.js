@@ -1,11 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import useTeamNames from '../hooks/useTeamNames';
+import Sidebar from './Sidebar';
 
 const Teams = () => {
-  return (
-    <div className="container">
-      Teams
-    </div>
-  )
-}
+  const { loading, response: teams } = useTeamNames();
+  console.log(teams);
 
-export default Teams
+  if(loading) return null
+
+  return (
+    <div className="container two-column">
+      <Sidebar title="Teams" list={teams.map((team) => team)} />  
+    </div>
+  );
+};
+
+export default Teams;
