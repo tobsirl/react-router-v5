@@ -19,7 +19,7 @@ function Sidebar({ title, list }) {
   return (
     <div>
       <h3 className="header">{title}</h3>
-      <ul>
+      <ul className="sidebar-list">
         {list.map((item) => (
           <CustomLink
             key={item}
