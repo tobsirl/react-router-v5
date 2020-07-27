@@ -23,7 +23,7 @@ export default function App() {
           <Route path="/teams">
             <Teams />
           </Route>
-          <Route path="/:teamId">
+          <Route exact path="/:teamId">
           <TeamPage />
           </Route>
           <Route path="*">
