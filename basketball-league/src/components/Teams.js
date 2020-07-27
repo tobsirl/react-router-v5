@@ -15,7 +15,7 @@ function Team() {
   const { teamId } = useParams();
   const { loading, response: team } = useTeam(teamId);
 
-  if (loading) return <p className="text-center">Loading...</p>;
+  if (loading) return <p className="center">Loading...</p>;
 
   return (
     <div className="panel">

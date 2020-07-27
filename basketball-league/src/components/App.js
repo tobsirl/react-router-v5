@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Players from './Players';
 import Teams from './Teams';
+import TeamPage from './TeamPage';
 import FourOhFour from './FourOhFour';
 
 export default function App() {
@@ -21,6 +22,9 @@ export default function App() {
           </Route>
           <Route path="/teams">
             <Teams />
+          </Route>
+          <Route path="/:teamId">
+          <TeamPage />
           </Route>
           <Route path="*">
             <FourOhFour />
