@@ -59,7 +59,7 @@ function Player({ players }) {
 }
 
 const Players = () => {
-  const { url } = useRouteMatch();
+  const { path } = useRouteMatch();
   const location = useLocation();
 
   const team = location.search ? parse(location.search).teamId : null;
@@ -72,7 +72,7 @@ const Players = () => {
     <div className="container two-column">
       <Sidebar title="Players" list={players.map((player) => player.name)} />
       <Switch>
-        <Route path={`${url}/:playerId`}>
+        <Route path={`${path}/:playerId`}>
           <Player players={players} />
         </Route>
         <Route path="*">

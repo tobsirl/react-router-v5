@@ -42,7 +42,7 @@ function Team() {
 }
 
 const Teams = () => {
-  const { url } = useRouteMatch();
+  const { path } = useRouteMatch();
   const { loading, response: teamNames } = useTeamNames();
 
   if (loading) return <p className="text-center">Loading</p>;
@@ -51,7 +51,7 @@ const Teams = () => {
     <div className="container two-column">
       <Sidebar title="Teams" list={teamNames} />
       <Switch>
-        <Route path={`${url}/:teamId`}>
+        <Route path={`${path}/:teamId`}>
           <Team />
         </Route>
         <Route path="*">
