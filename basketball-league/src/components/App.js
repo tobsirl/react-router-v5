@@ -7,6 +7,7 @@ import Players from './Players';
 import Teams from './Teams';
 import TeamPage from './TeamPage';
 import FourOhFour from './FourOhFour';
+import Articles from './Articles';
 
 export default function App() {
   return (
@@ -24,7 +25,10 @@ export default function App() {
             <Teams />
           </Route>
           <Route exact path="/:teamId">
-          <TeamPage />
+            <TeamPage />
+          </Route>
+          <Route path="/:teamId/articles">
+            <Articles />
           </Route>
           <Route path="*">
             <FourOhFour />
