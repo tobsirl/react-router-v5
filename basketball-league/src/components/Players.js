@@ -11,6 +11,7 @@ import {
 import { parse } from 'query-string';
 import usePlayers from '../hooks/usePlayers';
 import slug from 'slug';
+import Loading from './Loading'
 
 function Player({ players }) {
   const { playerId } = useParams();
@@ -66,7 +67,7 @@ const Players = () => {
 
   const { loading, response: players } = usePlayers(team);
 
-  if (loading) return <p className="text-center">Loading...</p>;
+  if (loading) return <Loading />
 
   return (
     <div className="container two-column">

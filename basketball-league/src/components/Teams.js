@@ -10,12 +10,13 @@ import useTeamNames from '../hooks/useTeamNames';
 import useTeam from '../hooks/useTeam';
 import Sidebar from './Sidebar';
 import TeamLogo from './TeamLogo';
+import Loading from './Loading'
 
 function Team() {
   const { teamId } = useParams();
   const { loading, response: team } = useTeam(teamId);
 
-  if (loading) return <p className="center">Loading...</p>;
+  if (loading) return <Loading />
 
   return (
     <div className="panel">
@@ -45,7 +46,7 @@ const Teams = () => {
   const { path } = useRouteMatch();
   const { loading, response: teamNames } = useTeamNames();
 
-  if (loading) return <p className="text-center">Loading</p>;
+  if (loading) return <Loading />
 
   return (
     <div className="container two-column">
