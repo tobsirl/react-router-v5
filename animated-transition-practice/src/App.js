@@ -199,15 +199,19 @@ function Home() {
 }
 
 function Content() {
+  const location = useLocation();
+
   return (
     <TransitionGroup>
-      <CSSTransition>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/newsletters">
-          <Newsletters />
-        </Route>
+      <CSSTransition timeout={250} classNames="fade" key={location.key}>
+        <Switch location={location}>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/newsletters">
+            <Newsletters />
+          </Route>
+        </Switch>
       </CSSTransition>
     </TransitionGroup>
   );
