@@ -33,17 +33,19 @@ function Content() {
   return (
     <div className="fill content">
       <TransitionGroup>
-        <Switch>
-          <Route exact path="/hsl/:h/:s/:l">
-            <HSL />
-          </Route>
-          <Route exact path="/rgb/:r/:g/:b">
-            <RGB />
-          </Route>
-          <Route path="*">
-            <div>Not Found</div>
-          </Route>
-        </Switch>
+        <CSSTransition timeout={250} classNames="fade">
+          <Switch>
+            <Route exact path="/hsl/:h/:s/:l">
+              <HSL />
+            </Route>
+            <Route exact path="/rgb/:r/:g/:b">
+              <RGB />
+            </Route>
+            <Route path="*">
+              <div>Not Found</div>
+            </Route>
+          </Switch>
+        </CSSTransition>
       </TransitionGroup>
     </div>
   );
