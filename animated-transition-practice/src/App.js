@@ -24,8 +24,10 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
+  Switch,
   useParams,
   useRouteMatch,
+  useLocation,
 } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
@@ -198,14 +200,16 @@ function Home() {
 
 function Content() {
   return (
-    <React.Fragment>
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route path="/newsletters">
-        <Newsletters />
-      </Route>
-    </React.Fragment>
+    <TransitionGroup>
+      <CSSTransition>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/newsletters">
+          <Newsletters />
+        </Route>
+      </CSSTransition>
+    </TransitionGroup>
   );
 }
 
