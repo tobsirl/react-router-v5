@@ -6,6 +6,7 @@ import {
   Route,
   Redirect,
   useParams,
+  useLocation,
 } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
@@ -30,11 +31,13 @@ const HSL = () => {
 };
 
 function Content() {
+  const location = useLocation();
+
   return (
     <div className="fill content">
       <TransitionGroup>
-        <CSSTransition timeout={250} classNames="fade">
-          <Switch>
+        <CSSTransition timeout={250} classNames="fade" key={location.key}>
+          <Switch location={location}>
             <Route exact path="/hsl/:h/:s/:l">
               <HSL />
             </Route>
