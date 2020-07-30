@@ -7,6 +7,7 @@ import {
   Redirect,
   useParams,
 } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 const RGB = () => {
   const { r, g, b } = useParams();
@@ -31,17 +32,19 @@ const HSL = () => {
 function Content() {
   return (
     <div className="fill content">
-      <Switch>
-        <Route exact path="/hsl/:h/:s/:l">
-          <HSL />
-        </Route>
-        <Route exact path="/rgb/:r/:g/:b">
-          <RGB />
-        </Route>
-        <Route path="*">
-          <div>Not Found</div>
-        </Route>
-      </Switch>
+      <TransitionGroup>
+        <Switch>
+          <Route exact path="/hsl/:h/:s/:l">
+            <HSL />
+          </Route>
+          <Route exact path="/rgb/:r/:g/:b">
+            <RGB />
+          </Route>
+          <Route path="*">
+            <div>Not Found</div>
+          </Route>
+        </Switch>
+      </TransitionGroup>
     </div>
   );
 }
