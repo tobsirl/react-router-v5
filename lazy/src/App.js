@@ -3,12 +3,12 @@
   components to be loaded lazily via React.lazy.
 */
 
-import * as React from 'react';
+import React, { lazy, Suspense } from 'react';
 import Loading from './Loading';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Home from './Home';
-import Newsletters from './Newsletters';
-import Dashboard from './Dashboard';
+const Home = lazy(() => import('./Home'));
+const Dashboard = lazy(() => import('./Dashboard'));
+const Newsletters = lazy(() => import('./Newsletters'));
 
 export default function App() {
   return (
@@ -27,16 +27,17 @@ export default function App() {
         </ul>
 
         <hr />
-
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/newsletters">
-          <Newsletters />
-        </Route>
-        <Route path="/dashboard">
-          <Dashboard />
-        </Route>
+        <Suspense fallback={Loading}>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/newsletters">
+            <Newsletters />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+        </Suspense>
       </div>
     </Router>
   );
