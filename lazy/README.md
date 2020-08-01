@@ -51,3 +51,10 @@ function App () {
   )
 }
 ```
+
+The benefit of code splitting can be seen when we run:
+```sh
+npm run build
+```
+<img width="851" alt="split-v5" src="https://user-images.githubusercontent.com/25591390/89098460-bd944500-d3df-11ea-8151-fb662d59b816.png">
+Now our application is split into three separate chucks based on the selected route. Before code splitting the entire site would be downloaded for the end user.
