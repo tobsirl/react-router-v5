@@ -19,4 +19,35 @@ Code splitting can be implemented at:
 
 The most common way is to split at the route level, overly this just feels more natural.
 
+## React.lazy + React.Suspense
+`React.lazy` takes in a single argument - a function that invokes a dynamic `import`. What it returns is a regular React Component.
 
+```js
+const LazyHomeComponent = React.lazy(() => import('./Home'))
+
+...
+
+<LazyHomeComponent />
+
+```
+With `Dynamic Imports` being asynchronous we can have an unspecified amount of time the client needs to wait before the component is loaded, rendered, and the UI is displayed.
+
+To solve this problem we can use React's `Suspense` component passing it a `fallback` element.
+
+```js
+const AdDashboard = React.lazy(() => import('./AdDashboard'))
+const Analytics = React.lazy(() => import('./Analytics'))
+const Settings = React.lazy(() => import('./Settings'))
+
+function App () {
+  return (
+    <div>
+      <React.Suspense fallback={<Loading />}>
+        <AdDashboard />
+        <Analytics />
+        <Settings />
+      </React.Suspense>
+    </div>
+  )
+}
+```
