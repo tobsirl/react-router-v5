@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 export default function SuperCentered() {
   return (
-    <div>
-      01. Super Centered
+    <div className="parent">
+      <div className="child">:)</div>
     </div>
-  )
+  );
 }

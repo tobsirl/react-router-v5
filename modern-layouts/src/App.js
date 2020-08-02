@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import Home from './components/Home';
 import SuperCentered from './components/SuperCentered';
@@ -22,10 +17,6 @@ export default function App() {
   return (
     <Router>
       <div className="fill">
-        <Route exact path="/">
-          <Redirect to={Home} />
-        </Route>
-
         <ul className="nav">
           <Link to="/super-centered">Super Centered</Link>
           <Link to="/deconstruted-pancake">Deconstructed Pancake</Link>
@@ -39,36 +30,41 @@ export default function App() {
           <Link to="/respect">Respect for Aspect</Link>
         </ul>
 
-        <Route path="/super-centered">
-          <SuperCentered />
-        </Route>
-        <Route path="/deconstruted-pancake">
-          <DeconstructedPancake />
-        </Route>
-        <Route path="/sidebar">
-          <Sidebar />
-        </Route>
-        <Route path="/pancake">
-          <Pancake />
-        </Route>
-        <Route path="/holygrail">
-          <HolyGrail />
-        </Route>
-        <Route path="/span">
-          <Span />
-        </Route>
-        <Route path="/ram">
-          <RAM />
-        </Route>
-        <Route path="/lineup">
-          <Lineup />
-        </Route>
-        <Route path="/clamp">
-          <Clamp />
-        </Route>
-        <Route path="/respect">
-          <Respect />
-        </Route>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/super-centered">
+            <SuperCentered />
+          </Route>
+          <Route path="/deconstruted-pancake">
+            <DeconstructedPancake />
+          </Route>
+          <Route path="/sidebar">
+            <Sidebar />
+          </Route>
+          <Route path="/pancake">
+            <Pancake />
+          </Route>
+          <Route path="/holygrail">
+            <HolyGrail />
+          </Route>
+          <Route path="/span">
+            <Span />
+          </Route>
+          <Route path="/ram">
+            <RAM />
+          </Route>
+          <Route path="/lineup">
+            <Lineup />
+          </Route>
+          <Route path="/clamp">
+            <Clamp />
+          </Route>
+          <Route path="/respect">
+            <Respect />
+          </Route>
+        </Switch>
       </div>
     </Router>
   );
