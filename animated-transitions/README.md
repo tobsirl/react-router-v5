@@ -1,68 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Animated Transitions
+First step is to install react-transition-group
+```sh
+npm i react-transition-group
+```
 
-## Available Scripts
+## Transition Group
+The way you use `TransitionGroup` as a wrapper component.
+```js
+<TransitionGroup>
+  {/* stuff */}
+</TransitionGroup>
+```
+Defined, it’s a “state machine for managing the mounting and unmounting of components over time”. In practice, the first thing it does is it keeps track of all of its children (`props.children`) inside of its local state.
 
-In the project directory, you can run:
+Then, whenever its props change and its `getDerivedStateFromProps` is called, it loops over the next `children` and figures out which are new (entering), which have been deleted (exiting), and which children have stayed the same. 
 
-### `npm start`
+Once it figures that out, it clones and merges all of its children together passing to each item a few props which represent its status (`exiting`, `entering`, etc.). 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+At this point, it updates its local state with all of the merged children (which all individually know if they’re entering, exiting, or remaining the same). That causes a re-render and the new merged `children` is shown to the view.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Basically, `TransitionGroup` renders all its new and old children after passing certain props to each based on if they're new, old, or the same.
 
-### `npm test`
+Why does it render **all** the old children, new children, and children that didn't change. The reason is for animation purposes. By keeping track of the `exiting` and `entering` children you can tansition between them.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The last important item to mention about `TransitionGroup` is the way in which it keeps track of which children are which. This is similar to the key prop when mapping over an array to create a list UI, each array item requres a unique `key` prop.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+`TransitionGroup` uses the key prop to uniquely identify which children have changed (entered or exited)
