@@ -59,10 +59,59 @@
   flex: 0 1 300px;
   /* If we do want the items to stretch: */
   flex: 1 1 300px;
-  
-     /* etc. */
+
+  /* etc. */
   border: 1px solid red;
   background: lightpink;
   font-size: 2rem;
   text-align: center;
+}
+
+/* EX 3 */
+body.ex3 {
+  display: grid;
+  grid-template-columns: minmax(150px, 25%) 1fr;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  color: #000;
+}
+
+.sidebar.ex3 {
+  height: 100vh;
+
+  /*  etc. */
+  background: lightpink;
+  font-size: 2rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.content.ex3 {
+  padding: 2rem;
+  font-size: 2rem;
+}
+
+/* EX 4 */
+body.ex4 {
+  display: grid;
+  height: 100%;
+  grid-template-rows: auto 1fr auto;
+}
+
+header.ex4 {
+  background: lightpink;
+  padding: 2rem;
+  color: #000;
+}
+
+main.ex4 {
+  background: coral;
+}
+
+footer.ex4 {
+  background: wheat;
+  padding: 2rem;
+  text-align: center;
+  color: #000;
 }
