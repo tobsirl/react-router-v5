@@ -11,7 +11,7 @@ import Span from './components/Span';
 import RAM from './components/RAM';
 import Lineup from './components/Lineup';
 import Clamp from './components/Clamp';
-import Respect from './components/Respect';
+import Aspect from './components/Aspect';
 
 export default function App() {
   return (
@@ -27,7 +27,7 @@ export default function App() {
           <Link to="/RAM">RAM</Link>
           <Link to="/lineup">Line Up</Link>
           <Link to="/clamp">Clamping My Style</Link>
-          <Link to="/respect">Respect for Aspect</Link>
+          <Link to="/aspect">Respect for Aspect</Link>
         </ul>
 
         <Switch>
@@ -61,8 +61,8 @@ export default function App() {
           <Route path="/clamp">
             <Clamp />
           </Route>
-          <Route path="/respect">
-            <Respect />
+          <Route path="/aspect">
+            <Aspect />
           </Route>
         </Switch>
       </div>

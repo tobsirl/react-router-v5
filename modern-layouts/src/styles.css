@@ -230,3 +230,56 @@ body.ex8 {
 h1.ex8 {
   font-size: 1.5rem;
 }
+
+/* Ex 9 */
+body.ex9 {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  color: #000;
+}
+
+.visual.ex9 {
+  height: 100px;
+  width: 100%;
+  background: wheat;
+  margin: 0.5rem 0;
+}
+
+.card.ex9 {
+  width: clamp(23ch, 50vw, 46ch);
+  display: flex;
+  flex-direction: column;
+  background: lightpink;
+  padding: 1rem;
+}
+
+h1.ex9 {
+  font-size: 1.5rem;
+}
+
+/* Ex 10 */
+body.ex10 {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  color: #000;
+}
+
+.visual.ex10 {
+  aspect-ratio: 16/9;
+  background: wheat;
+  margin: 0.5rem 0;
+}
+
+.card.ex10 {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  background: lightpink;
+  padding: 1rem;
+}
+
+h1.ex10 {
+  font-size: 1.5rem;
+}
