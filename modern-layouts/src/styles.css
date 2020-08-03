@@ -115,3 +115,77 @@ footer.ex4 {
   text-align: center;
   color: #000;
 }
+
+/* EX 5 */
+body.ex5 {
+  display: grid;
+  height: 100vh;
+  grid-template: auto 1fr auto / auto 1fr auto;
+  color: #000;
+}
+
+header.ex5 {
+  background: lightpink;
+  padding: 2rem;
+  grid-column: 1 / 4;
+}
+
+.left-sidebar.ex5 {
+  background: lightblue;
+  grid-column: 1 / 2;
+}
+
+main.ex5 {
+  background: coral;
+  grid-column: 2 / 3;
+}
+
+.right-sidebar.ex5 {
+  background: yellow;
+  grid-column: 3 / 4;
+}
+
+footer.ex5 {
+  background: wheat;
+  padding: 2rem;
+  text-align: center;
+  grid-column: 1 / 4;
+}
+
+.left-sidebar,
+.right-sidebar.ex5 {
+  padding: 1rem;
+}
+
+/* Ex 6 */
+body.ex6 {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+
+div.ex6 {
+  display: grid;
+  place-items: center;
+}
+
+.span-12.ex6 {
+  background: lightpink;
+  grid-column: 1 / 13;
+}
+
+.span-6.ex6 {
+  background: lightblue;
+  grid-column: 1 / 7;
+}
+
+.span-4.ex6 {
+  background: coral;
+  grid-column: 4 / 9;
+}
+
+.span-2.ex6 {
+  background: yellow;
+  grid-column: 3 / 5;
+}
