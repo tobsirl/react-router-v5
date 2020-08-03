@@ -24,7 +24,8 @@
   font-weight: 900;
 }
 
-.parent {
+/* EX 1 */
+.parent.ex1 {
   display: grid;
   place-items: center;
 
@@ -36,9 +37,30 @@
   overflow: auto;
 }
 
-.child {
+.child.ex1 {
   padding: 0.5rem;
   border-radius: 10px;
+  border: 1px solid red;
+  background: lightpink;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* EX 2 */
+.parent.ex2 {
+  display: flex;
+  flex-wrap: wrap;
+  color: black;
+}
+
+.child.ex2 {
+  /* flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ] */
+  /* If we don't want the items to stretch: */
+  flex: 0 1 300px;
+  /* If we do want the items to stretch: */
+  flex: 1 1 300px;
+  
+     /* etc. */
   border: 1px solid red;
   background: lightpink;
   font-size: 2rem;
