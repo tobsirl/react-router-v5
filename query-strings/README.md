@@ -70,3 +70,21 @@ function Topics () {
   )
 }
 ```
+
+To parse the string we can use:
+```sh
+npm i query-string
+```
+With that library installed, all we need to do is call `queryString.parse`, passing it `location.search`. That will parse the query string into an object which we can then grab the values off of.
+
+```js
+import queryString from 'query-string'
+import { useLocation } from 'react-router-dom'
+
+...
+
+const { search } = useLocation()
+const values = queryString.parse(search)
+console.log(values.filter) // "top"
+console.log(values.origin) // "im"
+```
