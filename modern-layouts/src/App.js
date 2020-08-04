@@ -1,5 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useLocation,
+} from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import Home from './components/Home';
 import SuperCentered from './components/SuperCentered';
@@ -30,41 +37,45 @@ export default function App() {
           <Link to="/aspect">Respect for Aspect</Link>
         </ul>
 
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/super-centered">
-            <SuperCentered />
-          </Route>
-          <Route path="/deconstruted-pancake">
-            <DeconstructedPancake />
-          </Route>
-          <Route path="/sidebar">
-            <Sidebar />
-          </Route>
-          <Route path="/pancake">
-            <Pancake />
-          </Route>
-          <Route path="/holygrail">
-            <HolyGrail />
-          </Route>
-          <Route path="/span">
-            <Span />
-          </Route>
-          <Route path="/ram">
-            <RAM />
-          </Route>
-          <Route path="/lineup">
-            <Lineup />
-          </Route>
-          <Route path="/clamp">
-            <Clamp />
-          </Route>
-          <Route path="/aspect">
-            <Aspect />
-          </Route>
-        </Switch>
+        <TransitionGroup>
+          <CSSTransition timeout={250} className="fade">
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/super-centered">
+                <SuperCentered />
+              </Route>
+              <Route path="/deconstruted-pancake">
+                <DeconstructedPancake />
+              </Route>
+              <Route path="/sidebar">
+                <Sidebar />
+              </Route>
+              <Route path="/pancake">
+                <Pancake />
+              </Route>
+              <Route path="/holygrail">
+                <HolyGrail />
+              </Route>
+              <Route path="/span">
+                <Span />
+              </Route>
+              <Route path="/ram">
+                <RAM />
+              </Route>
+              <Route path="/lineup">
+                <Lineup />
+              </Route>
+              <Route path="/clamp">
+                <Clamp />
+              </Route>
+              <Route path="/aspect">
+                <Aspect />
+              </Route>
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
       </div>
     </Router>
   );
