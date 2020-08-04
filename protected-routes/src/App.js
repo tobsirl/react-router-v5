@@ -34,6 +34,21 @@ const fakeAuth = {
 const Home = () => <h3>Home</h3>;
 const Notifications = () => <h3>Notifications</h3>;
 
+function PrivateRoute({ children, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={() => {
+        return fakeAuth.isAuthenticated === true ? (
+          children
+        ) : (
+          <Redirect to="/login" />
+        );
+      }}
+    />
+  );
+}
+
 function Login() {
   const [redirectToReferrer, setRedirectToReferrer] = React.useState(false);
 
@@ -81,9 +96,9 @@ export default function App() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/notifications">
+        <PrivateRoute path="/notifications">
           <Notifications />
-        </Route>
+        </PrivateRoute>
       </div>
     </Router>
   );
