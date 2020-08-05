@@ -11,21 +11,35 @@ const Home = () => <h1>Home</h1>;
 const Settings = () => <h1>Settings</h1>;
 
 function Survey() {
+  const [isBlocking, setIsBlocking] = React.useState(false);
   const [food, setFood] = React.useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     e.target.reset();
+
+    setIsBlocking(false);
   };
 
   const handleChange = (e) => {
     const food = e.target.value;
 
     setFood(food);
+    setIsBlocking(food.length > 0);
   };
+
+  if (food && !isBlocking) {
+    return <h1>Thanks you for your submission</h1>;
+  }
 
   return (
     <form onSubmit={handleSubmit}>
+      <Prompt
+        when={isBlocking}
+        message={(location) =>
+          `Are you sure you want to go to ${location.pathname.slice(1)}?`
+        }
+      />
       <label>
         What is your favorite food?
         <input
