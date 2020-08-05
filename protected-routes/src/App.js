@@ -1,14 +1,3 @@
-/*
-  1. Create a `PrivateRoute` component that redirects to
-    the /login route if the user isn't authenticated (using 
-    fakeAuth.isAuthenticated).
-
-  2. Make /notifications a private route.
-
-  3. Finish implementing `AuthButton` to allow the user
-      to logout (using fakeAuth.signout).
-*/
-
 import * as React from 'react';
 import {
   BrowserRouter as Router,
@@ -34,21 +23,6 @@ const fakeAuth = {
 const Home = () => <h3>Home</h3>;
 const Notifications = () => <h3>Notifications</h3>;
 
-function PrivateRoute({ children, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={() => {
-        return fakeAuth.isAuthenticated === true ? (
-          children
-        ) : (
-          <Redirect to="/login" />
-        );
-      }}
-    />
-  );
-}
-
 function Login() {
   const [redirectToReferrer, setRedirectToReferrer] = React.useState(false);
 
@@ -71,8 +45,43 @@ function Login() {
   );
 }
 
+function PrivateRoute({ children, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={({ location }) => {
+        return fakeAuth.isAuthenticated === true ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/login',
+              state: { from: location },
+            }}
+          />
+        );
+      }}
+    />
+  );
+}
+
 function AuthButton() {
-  return <div />;
+  const history = useHistory();
+
+  return fakeAuth.isAuthenticated === true ? (
+    <p>
+      Welcome!{' '}
+      <button
+        onClick={() => {
+          fakeAuth.signout(() => history.push('/'));
+        }}
+      >
+        Sign out
+      </button>
+    </p>
+  ) : (
+    <p>You are not logged in.</p>
+  );
 }
 
 export default function App() {
