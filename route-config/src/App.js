@@ -33,9 +33,7 @@ const Newsletters = ({ routes }) => (
 
     {/* subroutes here */}
     {routes.map((route) => (
-      <Route key={route.path} path={route.path} exact={route.exact}>
-        <route.component />
-      </Route>
+      <RouteWithSubRoutes key={route.path} {...route}></RouteWithSubRoutes>
     ))}
   </div>
 );
@@ -64,6 +62,14 @@ const routes = [
   },
 ];
 
+function RouteWithSubRoutes(route) {
+  return (
+    <Route path={route.path} exact={route.exact}>
+      <route.component routes={route.routes} />
+    </Route>
+  );
+}
+
 export default function App() {
   return (
     <Router>
@@ -77,11 +83,8 @@ export default function App() {
           </li>
         </ul>
 
-        {/* top-level routes here */}
         {routes.map((route) => (
-          <Route key={route.path} path={route.path} exact={route.exact}>
-            <route.component {...route} />
-          </Route>
+          <RouteWithSubRoutes key={route.path} {...route} />
         ))}
       </div>
     </Router>
