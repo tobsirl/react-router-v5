@@ -32,6 +32,11 @@ const Newsletters = ({ routes }) => (
     </ul>
 
     {/* subroutes here */}
+    {routes.map((route) => (
+      <Route key={route.path} path={route.path} exact={route.exact}>
+        <route.component />
+      </Route>
+    ))}
   </div>
 );
 
@@ -74,12 +79,8 @@ export default function App() {
 
         {/* top-level routes here */}
         {routes.map((route) => (
-          <Route 
-          key={route.path}
-          component={route.component}
-          exact={route.exact}
-          >
-            {route.component}
+          <Route key={route.path} path={route.path} exact={route.exact}>
+            <route.component {...route} />
           </Route>
         ))}
       </div>
